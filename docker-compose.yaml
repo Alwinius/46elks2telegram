@@ -1,6 +1,7 @@
 version: "3"
 services:
   46elks2telegram:
+#    build: .
     image: ghcr.io/alwinius/46elks2telegram:main
     restart: always
     ports:
