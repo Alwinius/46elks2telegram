@@ -1,0 +1,9 @@
+version: "3"
+services:
+  46elks2telegram:
+    image: docker.pkg.github.com/alwinius/46elks2telegram/46elks2telegram:latest
+    restart: always
+    ports:
+      - "127.0.0.1:${PORT}:8080"
+    volumes:
+      - ${PWD}/config.ini:/app/config.ini
