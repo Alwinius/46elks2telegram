@@ -10,7 +10,7 @@ def sms():
     sender = request.forms.get('from')
     message = "New SMS received from "+sender+":\n"+incoming_message
     application.bot.send_message(chat_id=config["chatId"], parse_mode=ParseMode.MARKDOWN_V2, text=message)
-    print("You have received an SMS")
+    print(message)
     return HTTPResponse(status=200)
 
 
