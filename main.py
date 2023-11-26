@@ -11,8 +11,8 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 @post('/sms')
 def sms():
-    incoming_message = request.forms.get('message')
-    sender = request.forms.get('from')
+    incoming_message = request.forms.getunicode('message')
+    sender = request.forms.getunicode('from')
     message = escape_markdown("New SMS received from "+sender+":\n"+incoming_message,2)
     logging.debug("Forwarding message from "+sender+ " with content "+incoming_message)
     bot.send_message(chat_id=config["chatId"], parse_mode=ParseMode.MARKDOWN_V2, text=message)
