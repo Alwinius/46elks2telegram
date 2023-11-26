@@ -1,8 +1,8 @@
 from bottle import request, post, run, HTTPResponse
-from telegram.constants import ParseMode
 from telegram import Bot
-from telegram.ext import ApplicationBuilder
 import configparser
+
+from telegram.parsemode import ParseMode
 
 
 @post('/sms')
