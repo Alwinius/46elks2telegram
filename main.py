@@ -14,7 +14,6 @@ def sms():
     incoming_message = request.forms.get('message')
     sender = request.forms.get('from')
     message = escape_markdown("New SMS received from "+sender+":\n"+incoming_message,2)
-    message = message.replace("+", "\\+")
     logging.debug("Forwarding message from "+sender+ " with content "+incoming_message)
     bot.send_message(chat_id=config["chatId"], parse_mode=ParseMode.MARKDOWN_V2, text=message)
     return HTTPResponse(status=200)
