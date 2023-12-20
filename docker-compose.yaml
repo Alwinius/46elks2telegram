@@ -1,10 +1,9 @@
 version: "3"
 services:
   46elks2telegram:
-#    build: .
     image: ghcr.io/alwinius/46elks2telegram:main
     restart: always
     ports:
-      - "127.0.0.1:${PORT}:8080"
+      - "8080:8080"
     volumes:
       - ${PWD}/config.ini:/app/config.ini

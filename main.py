@@ -6,15 +6,17 @@ from telegram.parsemode import ParseMode
 from telegram.utils.helpers import escape_markdown
 
 import logging
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                     level=logging.DEBUG)
+                    level=logging.DEBUG)
+
 
 @post('/sms')
 def sms():
     incoming_message = request.forms.getunicode('message')
     sender = request.forms.getunicode('from')
-    message = escape_markdown("New SMS received from "+sender+":\n"+incoming_message,2)
-    logging.debug("Forwarding message from "+sender+ " with content "+incoming_message)
+    message = escape_markdown("New SMS received from " + sender + ":\n" + incoming_message, 2)
+    logging.debug("Forwarding message from " + sender + " with content " + incoming_message)
     bot.send_message(chat_id=config["chatId"], parse_mode=ParseMode.MARKDOWN_V2, text=message)
     return HTTPResponse(status=200)
 
